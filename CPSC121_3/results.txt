@@ -1,0 +1,55 @@
+Trial 1:
+What is your starting value? 444400003
+What is your ending value value? 444400135
+What is your customer code? r
+You used 13.2 gallons of water this month!
+Your cost is $15.01
+Trial 2:
+What is your starting value? 123456789
+What is your ending value value? 123999999
+What is your customer code? c
+You used 54321 gallons of water this month!
+Your cost is $1001.09
+Trial 3:
+What is your starting value? 111199999
+What is your ending value value? 119999999
+What is your customer code? i
+You used 880000 gallons of water this month!
+Your cost is $1017.60
+Trial 4:
+What is your starting value? 0
+What is your ending value value? 30000000
+What is your customer code? i
+You used 3000000.000000 gallons of water this month!
+Your cost is $1060.00
+Trial 5:
+What is your starting value? 0
+What is your ending value value? 39999999
+What is your customer code? i
+You used 3999999.900000 gallons of water this month!
+Your cost is $1080.00
+Trial 6:
+What is your starting value? 0
+What is your ending value value? 40000000
+What is your customer code? i
+You used 4000000.00 gallons of water this month!
+Your cost is $2040.00
+Trial 7:
+What is your starting value? 0
+What is your ending value value? 100004000
+What is your customer code? i
+You used 10000400.00 gallons of water this month!
+Your cost is $2501.00
+Trial 8:
+What is your starting value? 999999997
+What is your ending value value? 5
+What is your customer code? r
+You used 0.80 gallons of water this month!
+Your cost is $15.00
+Trial 9:
+What is your starting value? 0
+What is your ending value value? 99999999 
+What is your customer code? i
+You used 9999999.90 gallons of water this month!
+Your cost is $2100.00
+
