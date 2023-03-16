@@ -1,0 +1,23 @@
+What was the most difficult part of this assignment for you?
+
+The most difficult part of this assingment was dealing with all of the different functions and how
+to make them work together so that input validation was correct, as well as all of the graphical elements.
+
+What was the easiest?
+
+The easiest part of this assignment was the actual calculations and if statements for the game. My problems
+came in when I was dealing with multiple objects inside and outside functions/loops.
+
+If you were to expand this idea and add more features, what would
+you add and why?
+
+Expanding upon this idea, I would want to make the UI more user friendly and faster with keyboard shortcuts.
+
+Having completed the assignment, if you were to redo it, what
+would change in your approach/strategy? How would your
+implementation be different from your first attempt? Would it be
+easier or harder the second time?
+
+If i was to redo this assingment I would NOT add all of the extra functions and input validation.
+THe original time to create this assignment was 40 minuts but by adding the extra features it took me over
+5 hours.
