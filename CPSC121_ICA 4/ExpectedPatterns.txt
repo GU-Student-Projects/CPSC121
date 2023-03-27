@@ -1,0 +1,111 @@
+----------------------------------------
+Pattern 1
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+----------------------------------------
+Pattern 2
+* * * * * * * * * * 
+----------------------------------------
+Pattern 3
+* * * * * * * * * * 
+* * * * * * * * * * 
+* * * * * * * * * * 
+* * * * * * * * * * 
+* * * * * * * * * * 
+* * * * * * * * * * 
+* * * * * * * * * * 
+* * * * * * * * * * 
+* * * * * * * * * * 
+* * * * * * * * * * 
+----------------------------------------
+Pattern 4
+
+* 
+* * 
+* * * 
+* * * * 
+* * * * * 
+* * * * * * 
+* * * * * * * 
+* * * * * * * * 
+* * * * * * * * * 
+----------------------------------------
+Pattern 5
+* * * * * * * * * * 
+* * * * * * * * * 
+* * * * * * * * 
+* * * * * * * 
+* * * * * * 
+* * * * * 
+* * * * 
+* * * 
+* * 
+* 
+----------------------------------------
+Pattern 6
+
+
+* * 
+
+* * * * 
+
+* * * * * * 
+
+* * * * * * * * 
+
+----------------------------------------
+Pattern 7
+* 
+* 
+* * * 
+* 
+* * * * * 
+* 
+* * * * * * * 
+* 
+* * * * * * * * * 
+* 
+----------------------------------------
+Pattern 8
+X X X X X X X X X X 
+O O O O O O O O O O 
+X X X X X X X X X X 
+O O O O O O O O O O 
+X X X X X X X X X X 
+O O O O O O O O O O 
+X X X X X X X X X X 
+O O O O O O O O O O 
+X X X X X X X X X X 
+O O O O O O O O O O 
+----------------------------------------
+Pattern 9
+X O X O X O X O X O 
+X O X O X O X O X O 
+X O X O X O X O X O 
+X O X O X O X O X O 
+X O X O X O X O X O 
+X O X O X O X O X O 
+X O X O X O X O X O 
+X O X O X O X O X O 
+X O X O X O X O X O 
+X O X O X O X O X O 
+----------------------------------------
+Pattern 10
+X O O O O O O O O X 
+O X O O O O O O X O 
+O O X O O O O X O O 
+O O O X O O X O O O 
+O O O O X X O O O O 
+O O O O X X O O O O 
+O O O X O O X O O O 
+O O X O O O O X O O 
+O X O O O O O O X O 
+X O O O O O O O O X 
