@@ -12,8 +12,9 @@
 #include<thread>
 #include<string>
 #include<limits>
+#include<iomanip>
 
-#ifdef _WIN32
+#ifdef _WIN32 //This if statement is used to change the library used depending on OS architecture.
 #include <windows.h>
 #else
 #include <cstdlib>
@@ -23,7 +24,7 @@ using namespace std;
 
 void clearScreen(){ //function to clear terminal
 #ifdef _WIN32
-    system("cls");
+    system("cls"); //Run system command CLS or CLear
 #else
     system("clear");
 #endif
@@ -37,20 +38,20 @@ void fibonacciGenerator(){
     cout << "For what number do you want the fibonacci generator to calculate? " << endl;
     cin >> nthNumber;
     cout << endl;
-    if(nthNumber == 1){
-        cout << fibNumber1 <<endl;
+    if(nthNumber == 1){//If the number selected is 1 or 2, output the preset values of the Fibonacci sequence
+        cout << fibNumber1 <<endl;clearScreen();
     }
     else if(nthNumber == 2) {
         cout << fibNumber2 <<endl;
     }
     else{
-        for(int i=3; i<=nthNumber; i++){
+        for(int i=3; i<=nthNumber; i++){//For anything else, use the For loop to calculate the value
             fibNumber = fibNumber1 + fibNumber2;
             fibNumber1 = fibNumber2;
-            fibNumber2 = fibNumber; 
+            fibNumber2 = fibNumber; //sets value 2 as the previously calculated value
         }
         cout << "The number associated with the " << nthNumber << " of the fibonacci sequence is: " << fibNumber <<endl;
-        this_thread::sleep_for(chrono::seconds(3));
+        this_thread::sleep_for(chrono::seconds(3)); //sleep before clearing screen
     }
 }
 
@@ -58,9 +59,9 @@ bool isPrime(int n){
     if(n<2)
         return false;
 
-    for(int i = 2; i<n; i++){
+    for(int i = 2; i<n; i++){ //loop to determine if a number is prime using the Not Prime case first.
         if(n%i == 0)
-            return false;
+            return false; //if the number N % the iteration i is = 0, the number is not prime.
         }
         return true;
 }
@@ -71,8 +72,8 @@ void primeGenerator(){
     cin >> nthNumber;
     cout << endl;
     for(int i=1; i<=nthNumber; i++){
-        if(isPrime(i))
-        cout << i << " ";
+        if(isPrime(i)){ // if the function isPrime returns true and print the number
+            cout << i << " ";}
     }
     this_thread::sleep_for(chrono::seconds(3));    
 }
@@ -85,18 +86,18 @@ void randomNumberTest(){
     cin >> upperBound;
 
     srand(time(NULL));
-    randomNumber = rand()%upperBound;
+    randomNumber = rand()%upperBound; //generate a random number
 
-    while(!sameNumber){
+    while(!sameNumber){// while the value is set to not true, run the following loop
         secRandNumber = rand()%upperBound;
-        if (secRandNumber==randomNumber){
+        if (secRandNumber==randomNumber){ //if the new number = the original number, break the loop
             sameNumber = true;
         }else{
-            i++;
+            i++; //else increase the counter
             sameNumber = false;
         }
     }
-    cout << "It took: " << i << " attempts to find " << randomNumber << " again." << endl;
+    cout << "It took: " << i << " attempts to find " << randomNumber << " again." << endl; //Output the attempts it took.
     this_thread::sleep_for(chrono::seconds(3));   
 }    
 
@@ -107,24 +108,29 @@ void exponentCalculator(){
     cout << "Enter an exponent: ";
     cin >> exponent;
     
-    answer = base;
+    answer = base; //set the anser equal to the base due to 2^1 = 2
     for(int i = 1; i < exponent; i++){
-        answer = answer * base;
+        answer = answer * base; //multiply by 2 until the exponent desired is reached.
     }
     cout << "The answer is: " << answer << endl;
     this_thread::sleep_for(chrono::seconds(3)); 
 }
 
 void approximatePi(){
-    int upperBound = numeric_limits<int>::max();
+    int upperBound = 214748364; //UpperBound at the max Int limit was not precise so I decreased it.
     int j = 1;
     double answer = 0.0;
-    for (int i = 1; i <= upperBound; i++){
-        int denominator = 2*i-1;
+    for (int i = 1; i <= upperBound; i++){ //Run a loop that runs the function until the upperBound is met
+        int denominator = 2*i-1; //determine the denominator depending on the iteration
         answer += j * 4.0/denominator;
-        j *= -1;
+        j *= -1; //change the sign by multiplying by -1
     }
-    cout << answer <<endl;
+
+    int precision;
+    cout << "To what percision of decimals do you want PI to be calculated? "<<endl;
+    cin >> precision;
+
+    cout << setprecision(precision) << answer <<endl;
     this_thread::sleep_for(chrono::seconds(3));    
 }
     
@@ -151,46 +157,50 @@ int main(){
         clearScreen();
         cout << menuPrompt;
         int choice;
-        cin >> choice;
+        cin >> choice; // using CIN instead of Getline due to STOI errors found with newlines or empty characters.
 
         switch(choice){
             case 1:
                 // write your code for case 1 here
                 clearScreen();
-                fibonacciGenerator();
+                fibonacciGenerator(); //function for fibonacci
                 clearScreen();
                 // end case 1
                 break;
             case 2:
                 // write your code for case 2 here
                 clearScreen();
-                primeGenerator();
+                primeGenerator(); //function for prime Number
                 clearScreen();
                 // end case 2
                 break;
             case 3:
                 // write your code for case 3 here
                 clearScreen();
-                randomNumberTest();
+                randomNumberTest(); //function for randonNumber
                 clearScreen();
                 // end case 3
                 break;
             case 4:
                 // write your code for case 4 here
                 clearScreen();
-                exponentCalculator();
+                exponentCalculator(); //function for exponent calculation
                 clearScreen();
                 // end case 4
                 break;
             case 5:
                 // write your code for case 5 here
                 clearScreen();
-                approximatePi();
+                approximatePi(); //function for PI
                 clearScreen();
                 // end case 5
                 break;
             case 6:
                 // write your code for case 6 here
+                clearScreen();
+                cout << "Exiting program, have a great day!" << endl;
+                this_thread::sleep_for(chrono::seconds(2));
+                clearScreen();
                 runProgram = false;
                 // end case 6
                 break;
