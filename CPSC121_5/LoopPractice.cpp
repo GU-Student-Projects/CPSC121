@@ -11,7 +11,6 @@
 #include<chrono>
 #include<thread>
 #include<string>
-#include<limits>
 #include<iomanip>
 
 #ifdef _WIN32 //This if statement is used to change the library used depending on OS architecture.
