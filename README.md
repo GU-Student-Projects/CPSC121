@@ -1,6 +1,6 @@
 # CPSC121
 
-Projects for Gonzaga CPSC121 taught by Bryan Fischer.
+Projects for Gonzaga CPSC121 taught by Bryan Fischer. Most of these projects include functions which at the time of writing have not been taught in class yet. If you are looking for help on how to do the assignment itself, check both the **VOID** functions with the assignment name on them: `void tankGame(){...} ` and the **MAIN** function.
 
 ## Usage
 
@@ -12,4 +12,4 @@ This project is licensed under the MIT License. See the **LICENSE** file for det
 
 ## Credits
 
-This project was developed by `<ins>`Gabe DiMartino `</ins>` for public use and help with Gonzaga CPSC121 assignments.
+This project was developed by **Gabe DiMartino** for public use and help with Gonzaga CPSC121 assignments.
