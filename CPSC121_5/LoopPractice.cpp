@@ -174,7 +174,7 @@ int main(){
                 clearScreen();
                 // end case 4
                 break;
-            case 5:
+            case 5: 
                 // write your code for case 5 here
                 clearScreen();
                 {
