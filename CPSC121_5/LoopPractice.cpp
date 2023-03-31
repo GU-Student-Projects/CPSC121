@@ -52,8 +52,11 @@ int main(){
         // print the menu to the console
         clearScreen();
         cout << menuPrompt;
+        string menuChoice;
         int choice;
-        cin >> choice; // using CIN instead of Getline due to STOI errors found with newlines or empty characters.
+        getline(cin, menuChoice);
+
+        choice = stoi(menuChoice);    
 
         switch(choice){
             case 1:
@@ -64,8 +67,10 @@ int main(){
                 int fibNumber;
                 int fibNumber1 = 1;
                 int fibNumber2 = 1;
+                string input;
                 cout << "For what number do you want the fibonacci generator to calculate? " << endl;
-                cin >> nthNumber;
+                getline(cin, input);
+                nthNumber = stoi(input);
                 cout << endl;
                 if(nthNumber == 1){//If the number selected is 1 or 2, output the preset values of the Fibonacci sequence
                     cout << fibNumber1 <<endl;clearScreen();
@@ -94,6 +99,9 @@ int main(){
                 cout << "For what number do you want to find the prime numbers in its range from 0? " << endl;
                 cin >> nthNumber;
                 cout << endl;
+                string input;
+                getline(cin, input);
+                nthNumber = stoi(input);
 
                 for (int i = 2; i <= nthNumber; i++) { // loop through the numbers 2 to nthNumber (0 and 1 is not a prime number)
                     bool isPrime = true;
@@ -120,7 +128,9 @@ int main(){
                 int i = 1;
                 bool sameNumber = false;
                 cout << "For what number do you want the upper bound of the random number generator to be? "<< endl;
-                cin >> upperBound;
+                string input;
+                getline(cin, input);
+                upperBound = stoi(input);
 
                 srand(time(NULL));
                 randomNumber = rand()%upperBound; //generate a random number
@@ -146,9 +156,13 @@ int main(){
                 {
                 int base, exponent, answer;
                 cout << "Enter a base: ";
-                cin >> base;
+                string input;
+                getline(cin, input);
+                base = stoi(input);
                 cout << "Enter an exponent: ";
-                cin >> exponent;
+                string input2;
+                getline(cin, input2);
+                exponent= stoi(input);
     
                 answer = base; //set the anser equal to the base due to 2^1 = 2
                 for(int i = 1; i < exponent; i++){
@@ -175,7 +189,9 @@ int main(){
 
                 int precision;
                 cout << "To what percision of decimals do you want PI to be calculated? "<<endl;
-                cin >> precision;
+                string input;
+                getline(cin, input);
+                precision = stoi(input);
 
                 cout << setprecision(precision) << answer <<endl;
                 this_thread::sleep_for(chrono::seconds(3));    
