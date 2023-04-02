@@ -97,11 +97,11 @@ int main(){
                 {
                 int nthNumber;
                 cout << "For what number do you want to find the prime numbers in its range from 0? " << endl;
-                cin >> nthNumber;
-                cout << endl;
                 string input;
                 getline(cin, input);
                 nthNumber = stoi(input);
+                cout << endl;
+
 
                 for (int i = 2; i <= nthNumber; i++) { // loop through the numbers 2 to nthNumber (0 and 1 is not a prime number)
                     bool isPrime = true;
