@@ -155,18 +155,19 @@ int main(){
                 clearScreen();
                 {
                 int base, exponent, answer;
+                string input; 
+
                 cout << "Enter a base: ";
-                string input;
                 getline(cin, input);
                 base = stoi(input);
+
                 cout << "Enter an exponent: ";
-                string input2;
-                getline(cin, input2);
+                getline(cin, input);
                 exponent= stoi(input);
     
-                answer = base; //set the anser equal to the base due to 2^1 = 2
-                for(int i = 1; i < exponent; i++){
-                    answer = answer * base; //multiply by 2 until the exponent desired is reached.
+                answer = 1; //set the anser equal to the base due to 2^1 = 2
+                for(int i = 0; i < exponent; i++){
+                    answer *= base; //multiply by 2 until the exponent desired is reached.
                 }
                 cout << "The answer is: " << answer << endl;
                 this_thread::sleep_for(chrono::seconds(3)); 
