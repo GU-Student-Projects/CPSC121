@@ -17,17 +17,15 @@
 #include <cstdlib>
 #endif
 
-using namespace std;
-
-void clearScreen(){ //function to clear terminal
-#ifdef _WIN32
-    system("cls"); //Run system command CLS or CLear
-#else
-    system("clear");
-#endif
-}
 
 using namespace std;
+
+/**
+ * Function:        clearScreen();
+ * Return:          none (void)
+ * Description:     Clear Screen using terminal command cls or clear
+*/
+void clearScreen();
 
 /**
  * Function:        printReverse(const int NUMBER);
@@ -37,20 +35,7 @@ using namespace std;
  * Description:     Print the digits of NUMBER in reverse order.
  *                  E.g. if NUMBER is 12345, function should print 54321 
 */
-void printReverse(const int NUMBER){
-    int forwardNumber = NUMBER;
-    int reverseNumber = 0;
-
-    while(NUMBER != 0){
-        reverseNumber *= 10;
-        reverseNumber += forwardNumber%10;
-        forwardNumber /= 10;
-    }
-    cout << "The reverse of " << forwardNumber << " is " << reverseNumber << "."<<endl;
-    this_thread::sleep_for(chrono::seconds(3)); //sleep before clearing screen
-}
-
-
+void printReverse(const int NUMBER);
 /**
  * Function:        oddEvenZero(const int NUMBER);
  * Parameters:      integer NUMBER
@@ -77,6 +62,14 @@ void printReverse(const int NUMBER){
  * 
 */
 void oddEvenZero(const int NUMBER);
+/**
+ * Function:        nFactorial(const int NUMBER);
+ * Parameters:      integer NUMBER is the number of terms to calculate factorial
+ *                  NUMBER passed in must be 1 or greater
+ * Return:          int (nFactorial)
+ * Description:     Calculate the factorial to the nth term.
+*/
+double nFactorial(int NUMBER);
 
 /**
  * Function:        printE(const int NUMBER);
@@ -118,30 +111,51 @@ int main(){
                 cout << "What number would you like reversed? ";
                 string input;
                 getline(cin, input);
-                int number = stoi(menuChoice);
+                int number = stoi(input);
+                clearScreen();
                 printReverse(number);
                 clearScreen();
                 break;
             }
             case 2:
             {
-                //you implement
+                clearScreen();
+                cout << "What number would you like to input? ";
+                string input;
+                getline(cin, input);
+                int number = stoi(input);
+                clearScreen();
+                oddEvenZero(number);
+                clearScreen();
                 break;
             }
             case 3:
             {
-                //you implement
+                clearScreen();
+                cout << "For what value of N would you like to aproximate Euler's number? ";
+                string input;
+                getline(cin, input);
+                int number = stoi(input);
+                clearScreen();
+                printE(number);
+                clearScreen();
                 break;
             }
             case 4:
             {
+                clearScreen();
+                cout << "Exiting program, have a great day!" << endl;
+                this_thread::sleep_for(chrono::seconds(2));
+                clearScreen();
                 runProgram = false;
                 break;
             }
             default:
                 {
-                    cout << "Please enter a valid menu choice... try again" << endl;
-                    break;
+                clearScreen();
+                cout << "You entered [" << choice << "] Please enter a valid menu choice (1-4). " << endl;
+                this_thread::sleep_for(chrono::seconds(2));
+                break;
                 }
         }
 
@@ -164,3 +178,83 @@ void printMenu(){
 }
 
 //write your functions below here
+
+void printReverse(const int NUMBER){
+    int baseNumber = NUMBER;
+    int reverseNumber = 0;
+
+    while(baseNumber != 0){
+        reverseNumber *= 10;
+        reverseNumber += baseNumber % 10;
+        baseNumber /= 10;
+    }
+    cout << "The reverse of " << NUMBER << " is " << reverseNumber << "." << endl;
+    this_thread::sleep_for(chrono::seconds(3)); //sleep before clearing screen
+}
+
+void oddEvenZero(const int NUMBER){
+    int baseNumber = NUMBER;
+    int evenCount =0; int oddCount = 0; int zeroCount = 0;
+
+    while(baseNumber!=0){
+        int resultant = baseNumber % 10;
+        if (resultant % 10 == 0){
+            zeroCount++;
+        }
+        else if (resultant % 2 == 0){
+            evenCount++;
+        }
+        else{
+            oddCount++;
+        }
+        baseNumber /= 10;
+    }
+
+    string message = "In the number " + to_string(NUMBER) + "\n";
+    message += "\t Even Numbers: " + to_string(evenCount) + "\n";
+    message += "\t Odd Numbers: " + to_string(oddCount) + "\n";
+    message += "\t Zero Numbers: " + to_string(zeroCount) + "\n";
+    cout << message << endl;
+    this_thread::sleep_for(chrono::seconds(3)); //sleep before clearing screen
+
+}
+void printE(const int NUMBER){
+    int baseNumber = NUMBER;
+    double eulerAprox = 1;
+    for(int i = 1; i<= baseNumber; i++){
+        int factorialNumber = nFactorial(i);
+        eulerAprox += (1.0/factorialNumber);
+        
+    }
+    cout << setprecision(5) << fixed << "The approximation of euler's number to the " << NUMBER;
+    if (NUMBER == 1){
+        cout << "st term is " << eulerAprox << endl;
+    }
+    else if (NUMBER == 2){
+        cout << "nd term is " << eulerAprox << endl;
+    }
+    else if (NUMBER == 3){
+        cout << "rd term is " << eulerAprox << endl;
+    }    
+    else{
+        cout << "th term is " << eulerAprox << endl;
+    } 
+    this_thread::sleep_for(chrono::seconds(3)); //sleep before clearing screen
+
+}
+
+double nFactorial(const int NUMBER){
+    int baseNumber = NUMBER;
+    double factorialNumber = NUMBER;
+    while (baseNumber > 1){
+        factorialNumber *= --baseNumber;
+    }
+    return factorialNumber;
+}
+void clearScreen(){ //function to clear terminal
+#ifdef _WIN32
+    system("cls"); //Run system command CLS or CLear
+#else
+    system("clear");
+#endif
+}
