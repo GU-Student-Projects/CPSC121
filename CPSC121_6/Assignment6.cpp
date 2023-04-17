@@ -26,7 +26,6 @@ using namespace std;
  * Description:     Clear Screen using terminal command cls or clear
 */
 void clearScreen();
-
 /**
  * Function:        printReverse(const int NUMBER);
  * Parameters:      integer NUMBER is the original number we will print in reverse
@@ -70,7 +69,6 @@ void oddEvenZero(const int NUMBER);
  * Description:     Calculate the factorial to the nth term.
 */
 double nFactorial(int NUMBER);
-
 /**
  * Function:        printE(const int NUMBER);
  * Parameters:      integer NUMBER is the number of terms to calculate E
@@ -85,7 +83,13 @@ double nFactorial(int NUMBER);
  *                  brute force the answer
 */
 void printE(const int NUMBER);
-
+/**
+ * Function:        getValidInput(const string&);
+ * Parameters:      string Prompt is the prompt
+ * Return:          number (int)
+ * Description:     Validate input n>=1
+*/
+int getValidInput(const string& prompt);
 /**
  * Function:        printMenu()
  * Parameters:      none
@@ -95,11 +99,11 @@ void printE(const int NUMBER);
 void printMenu();
 
 int main(){
-
     bool runProgram = true;
     string menuChoice;
 
     do{
+        clearScreen();
         printMenu();
         getline(cin, menuChoice);
         int choice = stoi(menuChoice);
@@ -107,38 +111,26 @@ int main(){
         switch(choice){
             case 1:
             {
-                clearScreen();
-                cout << "What number would you like reversed? ";
+                cout << endl << "What number would you like reversed? ";
                 string input;
                 getline(cin, input);
                 int number = stoi(input);
-                clearScreen();
                 printReverse(number);
-                clearScreen();
                 break;
             }
             case 2:
             {
-                clearScreen();
-                cout << "What number would you like to input? ";
+                cout << endl << "What number would you like to input? ";
                 string input;
                 getline(cin, input);
                 int number = stoi(input);
-                clearScreen();
                 oddEvenZero(number);
-                clearScreen();
                 break;
             }
             case 3:
             {
-                clearScreen();
-                cout << "For what value of N would you like to aproximate Euler's number? ";
-                string input;
-                getline(cin, input);
-                int number = stoi(input);
-                clearScreen();
+                int number = getValidInput("For what value of N would you like to aproximate Euler's number? ");
                 printE(number);
-                clearScreen();
                 break;
             }
             case 4:
@@ -174,31 +166,32 @@ void printMenu(){
     menuPrompt += "4. Quit program\n";
     menuPrompt += "-------------------------------------\n";
     menuPrompt += "Enter your choice: ";
-    cout << menuPrompt << endl;
+    cout << menuPrompt << " ";
 }
 
 //write your functions below here
 
 void printReverse(const int NUMBER){
+    clearScreen();
     int baseNumber = NUMBER;
     int reverseNumber = 0;
 
     while(baseNumber != 0){
         reverseNumber *= 10;
-        reverseNumber += baseNumber % 10;
+        reverseNumber += baseNumber % 10; //add the remainder of % 10 to the reversed number
         baseNumber /= 10;
     }
     cout << "The reverse of " << NUMBER << " is " << reverseNumber << "." << endl;
     this_thread::sleep_for(chrono::seconds(3)); //sleep before clearing screen
 }
-
 void oddEvenZero(const int NUMBER){
+    clearScreen();
     int baseNumber = NUMBER;
     int evenCount =0; int oddCount = 0; int zeroCount = 0;
 
     while(baseNumber!=0){
         int resultant = baseNumber % 10;
-        if (resultant % 10 == 0){
+        if (resultant % 10 == 0){ //if % matches one of these conditionals, add 1 to there tally
             zeroCount++;
         }
         else if (resultant % 2 == 0){
@@ -207,10 +200,10 @@ void oddEvenZero(const int NUMBER){
         else{
             oddCount++;
         }
-        baseNumber /= 10;
+        baseNumber /= 10; //dividing by 10 to get the next number in the input
     }
 
-    string message = "In the number " + to_string(NUMBER) + "\n";
+    string message = "In the number " + to_string(NUMBER) + "\n"; //convert int to string to accomodate for tabs
     message += "\t Even Numbers: " + to_string(evenCount) + "\n";
     message += "\t Odd Numbers: " + to_string(oddCount) + "\n";
     message += "\t Zero Numbers: " + to_string(zeroCount) + "\n";
@@ -219,16 +212,17 @@ void oddEvenZero(const int NUMBER){
 
 }
 void printE(const int NUMBER){
+    clearScreen();
     int baseNumber = NUMBER;
     double eulerAprox = 1;
     for(int i = 1; i<= baseNumber; i++){
-        int factorialNumber = nFactorial(i);
-        eulerAprox += (1.0/factorialNumber);
+        int factorialNumber = nFactorial(i); //call the function to calculate the factorial
+        eulerAprox += (1.0/factorialNumber); // add by 1/factorial number
         
     }
     cout << setprecision(5) << fixed << "The approximation of euler's number to the " << NUMBER;
     if (NUMBER == 1){
-        cout << "st term is " << eulerAprox << endl;
+        cout << "st term is " << eulerAprox << endl; //conditional to change the suffix
     }
     else if (NUMBER == 2){
         cout << "nd term is " << eulerAprox << endl;
@@ -242,14 +236,41 @@ void printE(const int NUMBER){
     this_thread::sleep_for(chrono::seconds(3)); //sleep before clearing screen
 
 }
-
-double nFactorial(const int NUMBER){
+double nFactorial(const int NUMBER){ //calculate the factorial to the nth term
     int baseNumber = NUMBER;
     double factorialNumber = NUMBER;
     while (baseNumber > 1){
-        factorialNumber *= --baseNumber;
+        factorialNumber *= --baseNumber; //multiply the factorial number by baseNumber - 1
     }
     return factorialNumber;
+}
+int getValidInput(const string& prompt){ //input validation for non numbers and ints < 1
+    string input;
+    int number;
+    bool validInput = false;
+    cout << endl << prompt;               
+    while (!validInput) {
+        getline(cin, input);
+        try {
+            number = stoi(input);
+            }
+        catch (const invalid_argument&) {
+            clearScreen();
+            cout << "Invalid input, please enter a valid integer greater than or equal to 1." << endl;
+            cout << prompt;
+            continue;
+        }
+        if (number < 1) {
+            clearScreen();
+            cout << "Invalid input, please enter a number greater than or equal to 1." << endl;
+            cout << prompt;
+        }
+        else {
+            clearScreen();
+            validInput = true;
+        }
+    }
+    return number;
 }
 void clearScreen(){ //function to clear terminal
 #ifdef _WIN32
