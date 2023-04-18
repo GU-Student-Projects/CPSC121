@@ -10,6 +10,7 @@
 #include<thread>
 #include<string>
 #include<iomanip>
+#include<fstream>
 
 #ifdef _WIN32 //This if statement is used to change the library used depending on OS architecture.
 #include <windows.h>
@@ -98,45 +99,59 @@ int getValidInput(const string& prompt);
 */
 void printMenu();
 
+void writeToFile(string input, string filename);
+
 int main(){
     bool runProgram = true;
     string menuChoice;
+    string filename = "output.txt";
 
     do{
         clearScreen();
         printMenu();
         getline(cin, menuChoice);
+        writeToFile(menuChoice, "output.txt");
         int choice = stoi(menuChoice);
 
         switch(choice){
             case 1:
             {
-                cout << endl << "What number would you like reversed? ";
+                string prompt = "What number would you like reversed? ";
+                cout << prompt;
+                writeToFile(prompt, "output.txt");
                 string input;
                 getline(cin, input);
+                writeToFile(input, "output.txt");
                 int number = stoi(input);
                 printReverse(number);
                 break;
             }
             case 2:
             {
-                cout << endl << "What number would you like to input? ";
+                string prompt = "What number would you like to input? ";
+                cout << endl << prompt;
+                writeToFile(prompt, "output.txt");
                 string input;
                 getline(cin, input);
+                writeToFile(input, "output.txt");
                 int number = stoi(input);
                 oddEvenZero(number);
                 break;
             }
             case 3:
             {
-                int number = getValidInput("For what value of N would you like to aproximate Euler's number? ");
+                string prompt = "For what value of N would you like to aproximate Euler's number? ";
+                writeToFile(prompt, "output.txt");
+                int number = getValidInput(prompt);
                 printE(number);
                 break;
             }
             case 4:
             {
                 clearScreen();
-                cout << "Exiting program, have a great day!" << endl;
+                string prompt = "Exiting program, have a great day!";
+                cout << prompt << endl;
+                writeToFile(prompt, "output.txt");
                 this_thread::sleep_for(chrono::seconds(2));
                 clearScreen();
                 runProgram = false;
@@ -145,7 +160,9 @@ int main(){
             default:
                 {
                 clearScreen();
-                cout << "You entered [" << choice << "] Please enter a valid menu choice (1-4). " << endl;
+                string prompt = "You entered [" + to_string(choice) + "] Please enter a valid menu choice (1-4). ";
+                cout << prompt << endl;
+                writeToFile(prompt, "output.txt");
                 this_thread::sleep_for(chrono::seconds(2));
                 break;
                 }
@@ -167,6 +184,7 @@ void printMenu(){
     menuPrompt += "-------------------------------------\n";
     menuPrompt += "Enter your choice: ";
     cout << menuPrompt << " ";
+    writeToFile(menuPrompt, "output.txt");
 }
 
 //write your functions below here
@@ -181,7 +199,10 @@ void printReverse(const int NUMBER){
         reverseNumber += baseNumber % 10; //add the remainder of % 10 to the reversed number
         baseNumber /= 10;
     }
-    cout << "The reverse of " << NUMBER << " is " << reverseNumber << "." << endl;
+
+    string output = "The reverse of " + to_string(NUMBER) + " is " + to_string(reverseNumber) + ".\n";
+    cout << output;
+    writeToFile(output, "output.txt");
     this_thread::sleep_for(chrono::seconds(3)); //sleep before clearing screen
 }
 void oddEvenZero(const int NUMBER){
@@ -208,6 +229,7 @@ void oddEvenZero(const int NUMBER){
     message += "\t Odd Numbers: " + to_string(oddCount) + "\n";
     message += "\t Zero Numbers: " + to_string(zeroCount) + "\n";
     cout << message << endl;
+    writeToFile(message, "output.txt");
     this_thread::sleep_for(chrono::seconds(3)); //sleep before clearing screen
 
 }
@@ -220,18 +242,27 @@ void printE(const int NUMBER){
         eulerAprox += (1.0/factorialNumber); // add by 1/factorial number
         
     }
-    cout << setprecision(5) << fixed << "The approximation of euler's number to the " << NUMBER;
+    string output = "The approximation of euler's number to the " + to_string(NUMBER);
+    cout << setprecision(5) << fixed;
     if (NUMBER == 1){
-        cout << "st term is " << eulerAprox << endl; //conditional to change the suffix
+        output += ("st term is" + to_string(eulerAprox));
+        writeToFile(output, "output.txt");
+        cout << output << endl; //conditional to change the suffix
     }
     else if (NUMBER == 2){
-        cout << "nd term is " << eulerAprox << endl;
+        output += ("nd term is " + to_string(eulerAprox));
+        writeToFile(output, "output.txt");
+        cout << output << endl;
     }
     else if (NUMBER == 3){
-        cout << "rd term is " << eulerAprox << endl;
+        output += ("rd term is " + to_string(eulerAprox));
+        writeToFile(output, "output.txt");
+        cout << output << endl;
     }    
     else{
-        cout << "th term is " << eulerAprox << endl;
+        output += ("th term is " + to_string(eulerAprox));
+        writeToFile(output, "output.txt");
+        cout << output << endl;
     } 
     this_thread::sleep_for(chrono::seconds(3)); //sleep before clearing screen
 
@@ -248,22 +279,28 @@ int getValidInput(const string& prompt){ //input validation for non numbers and 
     string input;
     int number;
     bool validInput = false;
-    cout << endl << prompt;               
+    cout << endl << prompt;
+    string error = "Invalid input, please enter a valid integer greater than or equal to 1.";               
     while (!validInput) {
         getline(cin, input);
+        writeToFile(input, "output.txt");
         try {
             number = stoi(input);
             }
         catch (const invalid_argument&) {
             clearScreen();
-            cout << "Invalid input, please enter a valid integer greater than or equal to 1." << endl;
+            cout << error << endl;
+            writeToFile(error, "output.txt");
             cout << prompt;
+            writeToFile(prompt, "output.txt");
             continue;
         }
         if (number < 1) {
             clearScreen();
-            cout << "Invalid input, please enter a number greater than or equal to 1." << endl;
+            cout << error << endl;
+            writeToFile(error, "output.txt");
             cout << prompt;
+            writeToFile(prompt, "output.txt");
         }
         else {
             clearScreen();
@@ -278,4 +315,10 @@ void clearScreen(){ //function to clear terminal
 #else
     system("clear");
 #endif
+}
+
+void writeToFile(string input, string filename) {
+    ofstream outputFile(filename, ios::app);
+    outputFile << input << endl;
+    outputFile.close();
 }
