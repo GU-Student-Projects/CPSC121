@@ -116,14 +116,14 @@ int main(){
         switch(choice){
             case 1:
             {
-                string prompt = "What number would you like reversed? ";
+                string prompt = "What number would you like reversed? "; //making each prompt a string to utilize the writeToFile function
                 cout << prompt;
-                writeToFile(prompt, "output.txt");
+                writeToFile(prompt, "output.txt"); //call writeToFile function
                 string input;
                 getline(cin, input);
                 writeToFile(input, "output.txt");
                 int number = stoi(input);
-                printReverse(number);
+                printReverse(number); //call printReverse function
                 break;
             }
             case 2:
@@ -135,7 +135,7 @@ int main(){
                 getline(cin, input);
                 writeToFile(input, "output.txt");
                 int number = stoi(input);
-                oddEvenZero(number);
+                oddEvenZero(number); //call oddEvenZero function
                 break;
             }
             case 3:
@@ -287,7 +287,7 @@ int getValidInput(const string& prompt){ //input validation for non numbers and 
         try {
             number = stoi(input);
             }
-        catch (const invalid_argument&) {
+        catch (const invalid_argument&) { //if the argument is not an integer throw an error
             clearScreen();
             cout << error << endl;
             writeToFile(error, "output.txt");
@@ -295,7 +295,7 @@ int getValidInput(const string& prompt){ //input validation for non numbers and 
             writeToFile(prompt, "output.txt");
             continue;
         }
-        if (number < 1) {
+        if (number < 1) { //if the argument is less than one
             clearScreen();
             cout << error << endl;
             writeToFile(error, "output.txt");
@@ -319,6 +319,6 @@ void clearScreen(){ //function to clear terminal
 
 void writeToFile(string input, string filename) {
     ofstream outputFile(filename, ios::app);
-    outputFile << input << endl;
+    outputFile << input << endl; //outut to file
     outputFile.close();
 }

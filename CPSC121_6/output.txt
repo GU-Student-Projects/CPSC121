@@ -114,3 +114,25 @@ The approximation of euler's number to the 2nd term is 2.500000
 Enter your choice: 
 4
 Exiting program, have a great day!
+-------------------------------------
+1. Print Reverse
+2. Odd Even Zero
+3. Print e
+4. Quit program
+-------------------------------------
+Enter your choice: 
+2
+What number would you like to input? 
+0003456
+In the number 3456
+	 Even Numbers: 2
+	 Odd Numbers: 2
+	 Zero Numbers: 0
+
+-------------------------------------
+1. Print Reverse
+2. Odd Even Zero
+3. Print e
+4. Quit program
+-------------------------------------
+Enter your choice: 
