@@ -196,8 +196,8 @@ void printReverse(const int NUMBER){
     stringstream ss;
 
     string stringNumber = to_string(baseNumber);
-    for(auto c = stringNumber.rbegin(); c != stringNumber.rend(); ++c) {
-        ss << *c;
+    for(auto i = stringNumber.rbegin(); i != stringNumber.rend(); ++i) {
+        ss << *i;
     }
 
     string reverseNumber = ss.str();
