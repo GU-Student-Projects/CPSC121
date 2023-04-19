@@ -11,6 +11,7 @@
 #include<string>
 #include<iomanip>
 #include<fstream>
+#include<sstream>
 
 #ifdef _WIN32 //This if statement is used to change the library used depending on OS architecture.
 #include <windows.h>
@@ -192,15 +193,16 @@ void printMenu(){
 void printReverse(const int NUMBER){
     clearScreen();
     int baseNumber = NUMBER;
-    int reverseNumber = 0;
+    stringstream ss;
 
-    while(baseNumber != 0){
-        reverseNumber *= 10;
-        reverseNumber += baseNumber % 10; //add the remainder of % 10 to the reversed number
-        baseNumber /= 10;
+    string stringNumber = to_string(baseNumber);
+    for(auto c = stringNumber.rbegin(); c != stringNumber.rend(); ++c) {
+        ss << *c;
     }
 
-    string output = "The reverse of " + to_string(NUMBER) + " is " + to_string(reverseNumber) + ".\n";
+    string reverseNumber = ss.str();
+
+    string output = "The reverse of " + to_string(NUMBER) + " is " + reverseNumber + ".\n";
     cout << output;
     writeToFile(output, "output.txt");
     this_thread::sleep_for(chrono::seconds(3)); //sleep before clearing screen

@@ -4,9 +4,11 @@
 3. Print e
 4. Quit program
 -------------------------------------
-Enter your choice: 1
-What number would you like reversed? 12345
-The reverse of 12345 is 54321.
+Enter your choice: 
+1
+What number would you like reversed? 
+123000
+The reverse of 123000 is .
 
 -------------------------------------
 1. Print Reverse
@@ -14,62 +16,57 @@ The reverse of 12345 is 54321.
 3. Print e
 4. Quit program
 -------------------------------------
-Enter your choice: 2
+Enter your choice: 
+-------------------------------------
+1. Print Reverse
+2. Odd Even Zero
+3. Print e
+4. Quit program
+-------------------------------------
+Enter your choice: 
+1
+What number would you like reversed? 
+123000
+The reverse of 123000 is 000321.
+
+-------------------------------------
+1. Print Reverse
+2. Odd Even Zero
+3. Print e
+4. Quit program
+-------------------------------------
+Enter your choice: 
+1
+What number would you like reversed? 
+199000
+The reverse of 199000 is 000991.
+
+-------------------------------------
+1. Print Reverse
+2. Odd Even Zero
+3. Print e
+4. Quit program
+-------------------------------------
+Enter your choice: 
+1
+What number would you like reversed? 
+023543
+The reverse of 23543 is 34532.
+
+-------------------------------------
+1. Print Reverse
+2. Odd Even Zero
+3. Print e
+4. Quit program
+-------------------------------------
+Enter your choice: 
+2
 What number would you like to input? 
-1831870
-In the number 1831870
-	 Even Numbers: 2
-	 Odd Numbers: 4
-	 Zero Numbers: 1
-
--------------------------------------
-1. Print Reverse
-2. Odd Even Zero
-3. Print e
-4. Quit program
--------------------------------------
-Enter your choice: 3
-For what value of N would you like to aproximate Euler's number? 
-10
-The approximation of euler's number to the 10th term is 2.718282
--------------------------------------
-1. Print Reverse
-2. Odd Even Zero
-3. Print e
-4. Quit program
--------------------------------------
-Enter your choice: 5
-You entered [5] Please enter a valid menu choice (1-4). 
--------------------------------------
-1. Print Reverse
-2. Odd Even Zero
-3. Print e
-4. Quit program
--------------------------------------
-Enter your choice: 4
-Exiting program, have a great day!
--------------------------------------
-1. Print Reverse
-2. Odd Even Zero
-3. Print e
-4. Quit program
--------------------------------------
-Enter your choice: 1
-What number would you like reversed? 20400
-The reverse of 20400 is 402.
-
--------------------------------------
-1. Print Reverse
-2. Odd Even Zero
-3. Print e
-4. Quit program
--------------------------------------
-Enter your choice: 2
-What number would you like to input? 8008135
-In the number 8008135
-	 Even Numbers: 2
+123458
+In the number 123458
+	 Even Numbers: 3
 	 Odd Numbers: 3
-	 Zero Numbers: 2
+	 Zero Numbers: 0
 
 -------------------------------------
 1. Print Reverse
@@ -77,22 +74,38 @@ In the number 8008135
 3. Print e
 4. Quit program
 -------------------------------------
-Enter your choice: 3
-For what value of N would you like to aproximate Euler's number? e
-Invalid input, please enter a valid integer greater than or equal to 1.
-For what value of N would you like to aproximate Euler's number?  -1
-Invalid input, please enter a valid integer greater than or equal to 1.
-For what value of N would you like to aproximate Euler's number? 100
-The approximation of euler's number to the 100th term is 2.718282
+Enter your choice: 
+0017384
+You entered [17384] Please enter a valid menu choice (1-4). 
 -------------------------------------
 1. Print Reverse
 2. Odd Even Zero
 3. Print e
 4. Quit program
 -------------------------------------
-Enter your choice: 1
-What number would you like reversed? 00100100230
-The reverse of 100100230 is 32001001.
+Enter your choice: 
+2
+What number would you like to input? 
+0027926
+In the number 27926
+	 Even Numbers: 3
+	 Odd Numbers: 2
+	 Zero Numbers: 0
+
+-------------------------------------
+1. Print Reverse
+2. Odd Even Zero
+3. Print e
+4. Quit program
+-------------------------------------
+Enter your choice: 
+2
+What number would you like to input? 
+235004
+In the number 235004
+	 Even Numbers: 2
+	 Odd Numbers: 2
+	 Zero Numbers: 2
 
 -------------------------------------
 1. Print Reverse
@@ -112,8 +125,8 @@ The approximation of euler's number to the 2nd term is 2.500000
 4. Quit program
 -------------------------------------
 Enter your choice: 
-4
-Exiting program, have a great day!
+10
+You entered [10] Please enter a valid menu choice (1-4). 
 -------------------------------------
 1. Print Reverse
 2. Odd Even Zero
@@ -123,11 +136,11 @@ Exiting program, have a great day!
 Enter your choice: 
 2
 What number would you like to input? 
-0003456
-In the number 3456
-	 Even Numbers: 2
-	 Odd Numbers: 2
-	 Zero Numbers: 0
+10
+In the number 10
+	 Even Numbers: 0
+	 Odd Numbers: 1
+	 Zero Numbers: 1
 
 -------------------------------------
 1. Print Reverse
@@ -136,3 +149,33 @@ In the number 3456
 4. Quit program
 -------------------------------------
 Enter your choice: 
+3
+For what value of N would you like to aproximate Euler's number? 
+10
+The approximation of euler's number to the 10th term is 2.718282
+-------------------------------------
+1. Print Reverse
+2. Odd Even Zero
+3. Print e
+4. Quit program
+-------------------------------------
+Enter your choice: 
+3
+For what value of N would you like to aproximate Euler's number? 
+a
+Invalid input, please enter a valid integer greater than or equal to 1.
+For what value of N would you like to aproximate Euler's number? 
+-1
+Invalid input, please enter a valid integer greater than or equal to 1.
+For what value of N would you like to aproximate Euler's number? 
+6
+The approximation of euler's number to the 6th term is 2.718056
+-------------------------------------
+1. Print Reverse
+2. Odd Even Zero
+3. Print e
+4. Quit program
+-------------------------------------
+Enter your choice: 
+4
+Exiting program, have a great day!
