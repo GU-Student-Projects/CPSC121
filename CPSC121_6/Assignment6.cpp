@@ -1,7 +1,7 @@
 /**
- * Author:
- * Date Modified
- * Description:
+ * Author: Gabe DiMartino
+ * Date Modified 19 April 2023
+ * Description: Functions!
 */
 
 #include<iostream>

@@ -179,3 +179,48 @@ The approximation of euler's number to the 6th term is 2.718056
 Enter your choice: 
 4
 Exiting program, have a great day!
+-------------------------------------
+1. Print Reverse
+2. Odd Even Zero
+3. Print e
+4. Quit program
+-------------------------------------
+Enter your choice: 
+1
+What number would you like reversed? 
+123000
+The reverse of 123000 is 000321.
+
+-------------------------------------
+1. Print Reverse
+2. Odd Even Zero
+3. Print e
+4. Quit program
+-------------------------------------
+Enter your choice: 
+2
+What number would you like to input? 
+1324100
+In the number 1324100
+	 Even Numbers: 2
+	 Odd Numbers: 3
+	 Zero Numbers: 2
+
+-------------------------------------
+1. Print Reverse
+2. Odd Even Zero
+3. Print e
+4. Quit program
+-------------------------------------
+Enter your choice: 
+3
+For what value of N would you like to aproximate Euler's number? 
+10
+The approximation of euler's number to the 10th term is 2.718282
+-------------------------------------
+1. Print Reverse
+2. Odd Even Zero
+3. Print e
+4. Quit program
+-------------------------------------
+Enter your choice: 
