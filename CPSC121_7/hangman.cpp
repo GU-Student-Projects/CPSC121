@@ -33,7 +33,11 @@ const int MAX_GUESSES = 5;
 int main(){
 
     srand(time(NULL));
-    cout << "test"; 
+
+    string filename = "WordList.txt";
+    string words[WORD_COUNT];
+    readFromFile(filename, words);
+    playGame(words);
     //you implement
     
 
@@ -41,20 +45,94 @@ int main(){
 }
 
 void readFromFile(string filename, string words[]){
-    //you implement
+    ifstream readLine(filename);
+    int i = 0;
+    string word;
+    while (getline(readLine, word)){
+        words[i++]=word;
+    }
+    readLine.close();
 }
 
 string selectWord(string words[]){
-    //you implement
-    return nullptr;
+    int randNum = getRandomNumber(0, WORD_COUNT);
+    string selWord = words[randNum];
+    return selWord;
 }
 
 int getRandomNumber(int lowerBound, int upperBound){
-
-    return 0;
+    int randNum = rand()%(upperBound - lowerBound);
+    return randNum;
 }
 
 void playGame(string words[]){
-    //you implement
+    string hiddenWordInit[WORD_LENGTH];
+    string hiddenWord;
+    string guess;
+    string tempGuess = "empty";
+    char wrongGuess[MAX_GUESSES];
+    string randWord = selectWord(words);
+
+    for (int i = 0; i < WORD_LENGTH; i++){
+        hiddenWordInit[i] = "-";
+        hiddenWord += hiddenWordInit[i];
+    }
+
+    int correctChar = 0;
+    int incorrectGuess = 0;
+    int guessRemain = MAX_GUESSES;
+
+    while (guessRemain > 0 && correctChar < WORD_LENGTH) {
+        cout << "~~~~~~~~~~~~~~~~~~~~~~\n";
+        cout << "Hidden Word: " << hiddenWord << "\n";
+        cout << "~~~~~~~~~~~~~~~~~~~~~~\n";
+        cout << "Correct Characters: " << correctChar << "\n";
+        cout << "Incorrect Guesses: " << incorrectGuess << "\n";
+        cout << "Guesses Remaining: " << guessRemain << "\n";
+        cout << "Wrong Guesses: [";
+        for (int i = 0; i < incorrectGuess; i++) {
+            cout << wrongGuess[i] << "] [";
+        }
+        cout << "]\n\n";
+
+        cout << "Guess a letter: ";
+        getline(cin, guess);
+        cout << endl;
+
+        bool match = false;
+        for (int i = 0; i < WORD_LENGTH; i++) {
+            if (guess[0] == tempGuess[0]){
+                match = false;
+                break;
+            }
+            if (guess[0] == randWord[i]) {
+                hiddenWordInit[i] = guess[0];
+                correctChar++;
+                match = true;
+            }
+        }
+
+        if (!match) {
+            if (guess[0] == tempGuess[0]){
+                continue;
+            }else{
+                wrongGuess[incorrectGuess] = guess[0];
+                incorrectGuess++;
+                guessRemain--;
+            }
+        }
+
+        hiddenWord = "";
+        for (int i = 0; i < WORD_LENGTH; i++) {
+            hiddenWord += hiddenWordInit[i];
+            }
+        tempGuess = guess;
+        }
+
+    if (correctChar == WORD_LENGTH) {
+        cout << "Congratulations! You beat me with the word '" << randWord << "'\n";
+    } else {
+        cout << "You Failed!. The word was '" << randWord << "'\n";
+    }
 
 }
