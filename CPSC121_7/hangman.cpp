@@ -1,8 +1,8 @@
 /**
  * File:            hangman.cpp
- * Author:          your name
- * Date Modified: 
- * Description:
+ * Author:          Gabe DiMartino
+ * Date Modified:   30 April 2023
+ * Description:     hangman game with arrays
  */
 
 #include<iostream>
@@ -69,7 +69,7 @@ void playGame(string words[]){
     string hiddenWordInit[WORD_LENGTH];
     string hiddenWord;
     string guess;
-    string tempGuess = "empty";
+    string tempGuess = "";
     char wrongGuess[MAX_GUESSES];
     string randWord = selectWord(words);
 
