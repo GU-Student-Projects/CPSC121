@@ -113,13 +113,9 @@ void playGame(string words[]){
         }
 
         if (!match) {
-            if (guess[0] == tempGuess[0]){
-                continue;
-            }else{
-                wrongGuess[incorrectGuess] = guess[0];
-                incorrectGuess++;
-                guessRemain--;
-            }
+            wrongGuess[incorrectGuess] = guess[0];
+            incorrectGuess++;
+            guessRemain--;
         }
 
         hiddenWord = "";
@@ -129,6 +125,17 @@ void playGame(string words[]){
         tempGuess = guess;
         }
 
+    cout << "~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "Hidden Word: " << hiddenWord << "\n";
+    cout << "~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "Correct Characters: " << correctChar << "\n";
+    cout << "Incorrect Guesses: " << incorrectGuess << "\n";
+    cout << "Guesses Remaining: " << guessRemain << "\n";
+    cout << "Wrong Guesses: [";
+    for (int i = 0; i < incorrectGuess; i++) {
+        cout << wrongGuess[i] << "] [";
+    }
+        cout << "]\n\n";
     if (correctChar == WORD_LENGTH) {
         cout << "Congratulations! You beat me with the word '" << randWord << "'\n";
     } else {
