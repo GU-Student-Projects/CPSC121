@@ -34,55 +34,54 @@ int main(){
 
     srand(time(NULL));
 
-    string filename = "WordList.txt";
-    string words[WORD_COUNT];
-    readFromFile(filename, words);
+    string filename = "WordList.txt"; //designiate the wordlist to be read from the program
+    string words[WORD_COUNT]; //create an array size of WORD_COUNT
+    readFromFile(filename, words); //opend and read the file
     playGame(words);
-    //you implement
     
 
     return 0;
 }
 
 void readFromFile(string filename, string words[]){
-    ifstream readLine(filename);
+    ifstream readLine(filename); //open file frome passed through value filename
     int i = 0;
     string word;
-    while (getline(readLine, word)){
+    while (getline(readLine, word)){ //while there are words, set an element of the array to each word
         words[i++]=word;
     }
     readLine.close();
 }
 
 string selectWord(string words[]){
-    int randNum = getRandomNumber(0, WORD_COUNT);
+    int randNum = getRandomNumber(0, WORD_COUNT); //call random number and find the corresponding number in the array words[]
     string selWord = words[randNum];
-    return selWord;
+    return selWord; //return the word
 }
 
 int getRandomNumber(int lowerBound, int upperBound){
-    int randNum = rand()%(upperBound - lowerBound);
+    int randNum = rand()%(upperBound - lowerBound); //get a random number from 0 : 10
     return randNum;
 }
 
 void playGame(string words[]){
-    string hiddenWordInit[WORD_LENGTH];
+    string hiddenWordInit[WORD_LENGTH]; //array for the ---- on the ui
     string hiddenWord;
     string guess;
-    string tempGuess = "";
+    string tempGuess = ""; //initianlize the temp guess as nothing
     char wrongGuess[MAX_GUESSES];
-    string randWord = selectWord(words);
+    string randWord = selectWord(words); //set the random word equal to the random generated word
 
     for (int i = 0; i < WORD_LENGTH; i++){
         hiddenWordInit[i] = "-";
-        hiddenWord += hiddenWordInit[i];
+        hiddenWord += hiddenWordInit[i]; //combine and initialize the char array into a string
     }
 
     int correctChar = 0;
     int incorrectGuess = 0;
     int guessRemain = MAX_GUESSES;
 
-    while (guessRemain > 0 && correctChar < WORD_LENGTH) {
+    while (guessRemain > 0 && correctChar < WORD_LENGTH) { //while there are guesses left and the word is not guessed loop
         cout << "~~~~~~~~~~~~~~~~~~~~~~\n";
         cout << "Hidden Word: " << hiddenWord << "\n";
         cout << "~~~~~~~~~~~~~~~~~~~~~~\n";
@@ -90,8 +89,8 @@ void playGame(string words[]){
         cout << "Incorrect Guesses: " << incorrectGuess << "\n";
         cout << "Guesses Remaining: " << guessRemain << "\n";
         cout << "Wrong Guesses: [";
-        for (int i = 0; i < incorrectGuess; i++) {
-            cout << wrongGuess[i] << "] [";
+        for (int i = 0; i < incorrectGuess; i++) { //loop through the amount of incorrect guesses, displaying the wrong values
+            cout << wrongGuess[i] << "] ["; //the times this loop runs changes depending on howmany incorrect guesses there are
         }
         cout << "]\n\n";
 
@@ -99,30 +98,38 @@ void playGame(string words[]){
         getline(cin, guess);
         cout << endl;
 
-        bool match = false;
+        if (guess[0] > 64 && guess[0] < 91){ //convert all uppercase letters to lower
+            guess[0] += 32;
+        }
+
+        if (guess == randWord){ //if the guess matches completely the random word, the game is ended
+            cout << "Congratulations! You beat me with the word '" << randWord << "'\n";
+            return;
+        }
+
+        bool match = false; //loop to test if the word matches
         for (int i = 0; i < WORD_LENGTH; i++) {
-            if (guess[0] == tempGuess[0]){
-                match = false;
-                break;
+            if ((guess[0] == tempGuess[0]) && (guess[0] == randWord[i])){ //if the word matches and is the same do not increase the correct count
+                match = true;
             }
-            if (guess[0] == randWord[i]) {
-                hiddenWordInit[i] = guess[0];
+            else if (guess[0] == randWord[i]) { //if the first char matches the rand word chars
+                hiddenWordInit[i] = guess[0]; // change the array hiddenWordInt so it would look like {-, -, a, -, -}
                 correctChar++;
                 match = true;
             }
         }
 
         if (!match) {
-            wrongGuess[incorrectGuess] = guess[0];
-            incorrectGuess++;
+            wrongGuess[incorrectGuess] = guess[0]; //array index determened by what incorrect guess it is 1-5
+            incorrectGuess++; //if not correct, the array wrongGuess adds the value
             guessRemain--;
         }
 
         hiddenWord = "";
         for (int i = 0; i < WORD_LENGTH; i++) {
-            hiddenWord += hiddenWordInit[i];
+            hiddenWord += hiddenWordInit[i]; //combine the array hiddenWordInit into a string to be used in the ui. E.G --a--
             }
-        tempGuess = guess;
+        tempGuess = guess; //remember the previous guess
         }
 
     cout << "~~~~~~~~~~~~~~~~~~~~~~\n";
@@ -131,11 +138,11 @@ void playGame(string words[]){
     cout << "Correct Characters: " << correctChar << "\n";
     cout << "Incorrect Guesses: " << incorrectGuess << "\n";
     cout << "Guesses Remaining: " << guessRemain << "\n";
-    cout << "Wrong Guesses: [";
+    cout << "Wrong Guesses: ";
     for (int i = 0; i < incorrectGuess; i++) {
-        cout << wrongGuess[i] << "] [";
+        cout << "["<<wrongGuess[i] << "] ";
     }
-        cout << "]\n\n";
+        cout << "\n\n";
     if (correctChar == WORD_LENGTH) {
         cout << "Congratulations! You beat me with the word '" << randWord << "'\n";
     } else {
